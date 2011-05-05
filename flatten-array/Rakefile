@@ -1,0 +1,4 @@
+desc "Run tests"
+task :test do
+  load "test_flatten.rb"
+end
