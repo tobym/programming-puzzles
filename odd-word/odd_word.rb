@@ -10,6 +10,9 @@
 # Out:
 #   "whats eht matter htiw kansas."
 #
+#
+# Even though this solution looks quite ugly, with mutable state, I think fundamentally it's a better one than a lot of the other solutions I've seen. Other solutions store characters on the stack, which to me is cheating because the problem spec says to read and write one character at a time. It's debatable, since the spec also says words are no longer than 20 characters, but anyway, it works.
+#
 
 # file = "input.txt"
 file = ARGV.first
@@ -54,10 +57,10 @@ class OddWord
       elsif @mode == :seeking
         if ch == " "
           # Done seeking, time to reverse
-          @reverse_point = @offset - 1
+          reverse_point = @offset - 1
           consume_spaces!
           @reset_point = @offset
-          @offset = @reverse_point
+          @offset = reverse_point
           @mode = :reverse
         else
           @offset += 1
